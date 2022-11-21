@@ -16,7 +16,6 @@ Future<List<dynamic>> carregarMoedas() async {
   var moedasSerializada = value;
   var moedaList = jsonDecode(moedasSerializada);
   var lista = moedaList.entries.map((e) => e.key).toList();
-
   return lista;
 }
 
@@ -58,10 +57,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Expanded(
                         child: TextField(
-                          decoration: InputDecoration(label: Text("Valor")),
-                          onChanged: (value) =>
-                              valor = double.tryParse(value) ?? 0.0,
-                        ),
+                            decoration: InputDecoration(label: Text("Valor")),
+                            onChanged: (value) => setState(() {
+                                  valor = double.tryParse(value) ?? 0.0;
+                                })),
                       ),
                       DropdownButton(
                         value: moeda,
